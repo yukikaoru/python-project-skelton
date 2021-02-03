@@ -1,0 +1,17 @@
+version: '3'
+services:
+  python:
+    build:
+      context: ..
+      dockerfile: docker/python/Dockerfile
+    image: pythonproject
+    user: "${USERID:-root}:${GROUPID:-root}"
+    env_file:
+      - .env
+    environment:
+      PYTHONUNBUFFERED: 1
+      PYTHONPYCACHEPREFIX: "/tmp/pycache"
+    command: []
+    ports: []
+    volumes:
+      - ../src:/code

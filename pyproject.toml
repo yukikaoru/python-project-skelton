@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "__PROJECTNAME__"
+version = "0.1.0"
+description = ""
+authors = ["__AUTHOR__"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
+
+# Not yet supported.
+[tool.flake8]
+ignore = ["E203", "E266", "E501", "W503"]
+max-line-length = 120
+max-complexity = 18
+select = ["B", "C", "E", "F", "W", "T4", "B9"]
+exclude = [".git", "__pycache__"]
+
+[tool.pytest.ini_options]
+addopts = "-p no:cacheprovider"
+
